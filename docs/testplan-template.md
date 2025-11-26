@@ -315,3 +315,90 @@
 - Tulemused salvestatakse: `docs/results/jest/jest.log`
 - kõik testid on rohelised
 - logi on loodud
+
+# Testplan – Task 6: A/B testimine
+
+## 1. Sissejuhatus
+
+**Projekti nimi:** Kvaliteedijälg – A/B testimine frontendis  
+
+**Eesmärk:** tagada A/B testi valikuvõimaluse, salvestamise ja sündmuste logimise korrektne toimimine.
+
+---
+
+## 2. Ulatus
+
+**Kaasatud moodulid:**  
+- Frontend (`frontend/ab.js`)  
+  - valiVariant()  
+  - vahetaVariant()  
+  - looLayoutHTML()  
+  - looSyndmuseKeha()  
+  - localStorage salvestusloogika  
+- Frontend (`frontend/app.js`)  
+  - nupp variandi vahetamiseks  
+  - sündmuste vallandamine `variant_vaade` ja `variant_vahetus`  
+- Logid salvestatud kaustas `docs/results/analytics/`
+
+---
+
+## 3. Nõuded ja aktsepteerimiskriteeriumid
+
+### Funktsionaalsed nõuded
+1. Mõlemad variandid on selgelt eristatavad (unikaalne klass/atribuut).  
+2. `valiVariant` ja `vahetaVariant` tagastavad deterministliku tulemuse.  
+3. `looLayoutHTML` kuvab õige HTML vastavalt variandile.  
+4. `localStorage` salvestab ja taastab kasutaja valiku.  
+5. Sündmused `variant_vaade` ja `variant_vahetus` vallanduvad õigel ajal.  
+6. Logid salvestatakse automaatselt või käsitsi failidesse `docs/results/analytics/`.
+
+| Kontrollpunkt | Kriteerium |
+|----------------|------------|
+| Variandi eristamine | Mõlemal variandil on unikaalne klass või ID |
+| Funktsioonide töö | valiVariant, vahetaVariant, looLayoutHTML töötavad  |
+| localStorage | Valik salvestub ja taastub õigesti |
+| Sündmuste vallandamine | GA sündmused `variant_vaade` ja `variant_vahetus` registreeritud |
+| Logi olemasolu | docs/results/analytics/ kaustas logifailid olemas |
+
+---
+
+## 4. Riskid ja maandus
+
+| Kirjeldus | Mõju | Tõenäosus | Maandus |
+|-----------|-------|------------|---------|
+| Variandi eristamine ebaõnnestub | GA ei registreeri õigeid sündmusi | Keskmine | Kontrollida HTML klassid ja ID-d |
+| localStorage ei tööta | Valik ei säili | Madal | Kontrollida fallback-loogikat ja mockimist |
+| Sündmused ei vallandu | Analüüs ei tööta | Keskmine | Lisada testid ja logimine sündmuste jaoks |
+| Logi ei salvestu | Testplaani rikkumine | Madal | Automaatne salvestamine või käsitsi eksport |
+
+---
+
+## 5. Meetodid ja tööriistad
+
+- GA4 debug-mode jälgimine sündmuste registreerimiseks  
+- localStorage mockimine testide käigus  
+
+---
+
+## 6. Testkeskkonnad ja andmed
+
+- Brauser: Chrome / Firefox  
+- Käivitamise käsk: avada `frontend/index.html` brauseris  
+- Logide salvestamine: `docs/results/analytics/`
+
+---
+
+## 7. Ajajoon ja vastutajad
+
+| Tegevus | Vastutaja | Aeg |
+|----------|---------------|-------|
+| Variandi loogika ja HTML testimine | Daria | 5-10 min |
+| Nupu ja sündmuste kontroll brauseris | Daria | 5 min |
+| Logide salvestamine | Daria | 5 min |
+
+---
+
+## 8. Raporteerimine
+
+- Kontrollitakse, et mõlemad variandid ilmuvad GA sündmustes  
+

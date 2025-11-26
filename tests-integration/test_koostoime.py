@@ -50,7 +50,6 @@ def test_koond_endpoint_annab_502_kui_valis_api_katkestab() -> None:
     )
 
     vastus = client.get("/api/koond")
-
     assert vastus.status_code == 502
     keha = vastus.json()
     assert keha["detail"]["sonum"] == "Välise teenuse tõrge"
