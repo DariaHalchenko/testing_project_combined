@@ -76,7 +76,7 @@ jobs:
       - name: Loo CI README
         run: |
           mkdir -p docs/results/ci
-          echo "# CI Test Results" >> docs/results/ci/README.md
+          echo "# CI Test Results" > docs/results/ci/README.md
           echo "" >> docs/results/ci/README.md
           echo "## Workflow run" >> docs/results/ci/README.md
           echo "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> docs/results/ci/README.md

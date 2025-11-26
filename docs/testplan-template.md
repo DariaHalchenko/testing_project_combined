@@ -407,4 +407,90 @@
 
 ---
 
+# Testplan – Task 8: GitHub Actions CI
+
+## 1. Sissejuhatus
+
+**Projekti nimi:** Kvaliteedijälg – CI automatiseeritud testitöövoog  
+**Autorid ja kuupäev:** Daria, 26.11.2025  
+
+**Eesmärk:** tagada, et Python- ja JavaScript-testid käivitatakse automaatselt iga push'i ja pull request’i puhul ning testilogid ja CI töövoo info arhiveeritakse projekti dokumentatsiooni alla.
+
+## 2. Ulatus
+
+**Kaasatud komponendid:**
+- GitHub Actions workflow `.github/workflows/tests.yml`
+- Python testid:  
+  - `tests-python/`  
+  - `tests-integration/`
+- JavaScript testid:  
+  - `tests-js/`
+- Artefaktide salvestamine:  
+  - `docs/results/pytest/**`  
+  - `docs/results/jest/**`
+- CI dokumentatsioon:  
+  - `docs/results/ci/README.md`
+
+## 3. Nõuded ja aktsepteerimiskriteeriumid
+
+### Funktsionaalsed nõuded
+
+| Kontrollpunkt | Kriteerium |
+|--------------|------------|
+| Workflow käivitus | CI käivitub `push` ja `pull_request` sündmustel harule `main` |
+| Python testid | Keskkond seadistatakse (Python 3.11), paigaldatakse sõltuvused, käivitatakse `pytest tests-python tests-integration` |
+| JS testid | Node 20 keskkond, `npm ci`, `npm test` |
+| Artefaktide salvestamine | Logid arhiveeritakse: `pytest-logid` ja `jest-logid` |
+| CI dokumentatsioon | Fail `docs/results/ci/README.md` sisaldab töövoo linki ja artefaktide nimekirja |
+
+## 4. Riskid ja maandus
+
+| Kirjeldus | Mõju | Tõenäosus | Maandus |
+|----------|-------|-----------|---------|
+| Sõltuvuste paigaldamine ebaõnnestub | CI katkeb | Keskmine | Kontrollida `requirements.txt` ja `package.json` |
+| Testid kukuvad ja peatavad workflow | Arendusvoog katkeb | Keskmine | Parandada testid või koodi |
+| Artefaktide tee vale | Logisid ei arhiveerita | Madal | Kontrollida kataloogide olemasolu |
+| CI README ei genereeru | Dokumentatsioon puudulik | Madal | Kontrollida YAML-s ridade joondust |
+
+## 5. Meetodid ja tööriistad
+
+- **GitHub Actions** CI töövoogude loomiseks  
+- **actions/checkout** – repo kloonimine  
+- **actions/setup-python** – Python keskkond  
+- **actions/setup-node** – Node keskkond  
+- **pytest** – Python testimise tööriist  
+- **npm test** – JS testide käivitamine  
+- **actions/upload-artifact** – logide arhiveerimine  
+- Bash käsud README genereerimiseks
+
+## 6. Testkeskkond ja eeldused
+
+- GitHub repository  
+- Workflow fail `.github/workflows/tests.yml`  
+- Testide käsitsi käivitamise kontroll:
+  - `pytest tests-python tests-integration`
+  - `cd tests-js && npm test`
+
+
+## 7. Ajajoon ja vastutajad
+
+| Tegevus | Vastutaja | Aeg |
+|---------|-----------|------|
+| Workflow loomine | Daria | 5–10 min |
+| Testide integreerimine workflow’sse | Daria | 5–10 min |
+| Artefaktide ja README genereerimine | Daria | 5 min |
+
+## 8. Raporteerimine
+
+- CI logid salvestatakse GitHub Actions → Artifacts:
+  - `pytest-logid`
+  - `jest-logid`
+  - `ci-readme`
+- Projekti repo dokumentatsioon sisaldab:
+  - `docs/results/ci/README.md` – viide viimasele CI jooksule ja logide artefaktidele
+- Eduka testijooksu puhul mõlemad job'id on rohelised (PASS)
+
+---
+
+
 
