@@ -54,3 +54,20 @@ jobs:
           name: jest-logid
           path: docs/results/jest/**
 
+  ci-docs:
+    runs-on: ubuntu-latest
+    needs: [python-tests, js-tests]
+    steps:
+      - name: Klooni repo
+        uses: actions/checkout@v4
+      - name: Loo CI README
+        run: |
+          mkdir -p docs/results/ci
+          echo "# CI Test Results" > docs/results/ci/README.md
+          echo "Pytest artifacts: pytest-logid" >> docs/results/ci/README.md
+          echo "Jest artifacts: jest-logid" >> docs/results/ci/README.md
+      - name: Salvesta CI README
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-readme
+          path: docs/results/ci/README.md
