@@ -56,7 +56,7 @@
 
 --- 
 
-# Testplaan – Task 3: GA4 
+# Testiplaan – Task 3: GA4 
 
 ## 1. Sissejuhatus
 
@@ -122,7 +122,7 @@
 
 ---
 
-# Testplan – Task 4: Pytest 
+# Testiplaan – Task 4: Pytest 
 
 ## 1. Sissejuhatus
 
@@ -190,7 +190,7 @@
 
 ---
 
-# Testplan – Task 5: JavaScript testid
+# Testiplaan – Task 5: JavaScript testid
 
 ## 1. Sissejuhatus
 
@@ -264,7 +264,7 @@
 
 ---
 
-# Testplan – Task 6: A/B testimine
+# Testiplaan – Task 6: A/B testimine
 
 ## 1. Sissejuhatus
 
@@ -339,7 +339,7 @@
 
 ---
 
-# Testplan – Task 7: Integratsioonitestid
+# Testiplaan – Task 7: Integratsioonitestid
 
 ## 1. Sissejuhatus
 
@@ -407,7 +407,7 @@
 
 ---
 
-# Testplan – Task 8: GitHub Actions CI
+# Testiplaan – Task 8: GitHub Actions CI
 
 ## 1. Sissejuhatus
 
@@ -492,7 +492,7 @@
 
 ---
 
-# Testplan – Task 9: Locust koormustest
+# Testiplaan – Task 9: Locust koormustest
 
 ## 1. Sissejuhatus
 
