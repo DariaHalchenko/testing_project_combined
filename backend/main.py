@@ -72,7 +72,7 @@ def koonda_andmed() -> Dict[str, Any]:
             "allikad": allikad,
             "paastikuAeg": datetime.now(timezone.utc).isoformat(),
         }
-        logger.info("Koondatud API vastused edukalt", extra={"allikad": allikad})
+        logger.info("Koondan API vastuseid", extra={"allikad": allikad})
         return koond
     except HTTPException as viga:
         logger.error("Koondamise käigus ilmnes viga", exc_info=viga, extra={"allikad": allikad})
